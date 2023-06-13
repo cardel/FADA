@@ -28,4 +28,13 @@ class heap:
         self.arr[pos-1],self.arr[self.right(pos)-1] = self.arr[self.right(pos)-1],self.arr[pos-1]
         self.heapify(self.right(pos))
 
+  def build_heap(self):
+    for i in range(math.floor(self.size/2),0,-1):
+      self.heapify(i)
 
+  def heap_sort(self):
+    self.build_heap()
+    for i in range(self.size,1,-1):
+      self.arr[0],self.arr[i-1] = self.arr[i-1],self.arr[0]
+      self.size -= 1
+      self.heapify(1)
